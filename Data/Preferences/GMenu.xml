@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Menu>
+  <KeyBind>
+    <Select>VK_ENTER</Select>
+    <Cancel>VK_ESC</Cancel>
+    <Forward>VK_D</Forward>
+    <Back>VK_SHIFT+VK_D</Back>
+  </KeyBind>
+  <MenuItemD id="0">
+      <Label>ヌル</Label>
+      <Lang>VBScript</Lang>
+      <Script>GetPrim "Null"</Script>
+  </MenuItemD>
+  <MenuItemD id="1">
+      <Label>円錐</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Cone", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="2">
+      <Label>立方体</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Cube", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="3">
+      <Label>円柱</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Cylinder", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="4">
+      <Label>円盤</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Disc", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="5">
+      <Label>グリッド</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Grid", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="6">
+      <Label>球</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Sphere", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="7">
+      <Label>トーラス</Label>
+      <Lang>VBScript</Lang>
+      <Script>CreatePrim "Torus", "MeshSurface"</Script>
+  </MenuItemD>
+  <MenuItemD id="8">
+      <Label>ポイント移動ツール</Label>
+      <Lang>VBScript</Lang>
+      <Script>MovePointTool</Script>
+  </MenuItemD>
+  <MenuItemD id="9">
+      <Label>コンポーネント調整ツール</Label>
+      <Lang>VBScript</Lang>
+      <Script>Application.Commands.Item("Move Component Tool").Execute()</Script>
+  </MenuItemD>
+  <MenuItemD id="10">
+      <Label>ビュー平面プロポーショナル変換ツール</Label>
+      <Lang>VBScript</Lang>
+      <Script>Application.Commands.Item("Proportional Transform Tool").Execute()</Script>
+  </MenuItemD>
+  <MenuItemD id="11">
+      <Label>ビュー平面ピボット変換ツール</Label>
+      <Lang>VBScript</Lang>
+      <Script>Application.Commands.Item("Proportional Transform Tool").Execute()</Script>
+  </MenuItemD>
+  <MenuItemD id="12">
+      <Label>ポリゴン追加/編集ツール</Label>
+      <Lang>VBScript</Lang>
+      <Script>Application.Commands.Item("Add Polygon Tool").Execute()</Script>
+  </MenuItemD>
+</Menu>

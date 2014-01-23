@@ -1,0 +1,76 @@
+MenuFile セクションに記述された項目の値の先頭が「@」の場合は
+
+ExecuteScriptCode で実行
+
+それ以外はスクリプトファイルとみなして
+
+ExecuteScript で実行
+
+XMLパーサ
+	TinyXML
+	XMLLite
+
+//
+HWND h = GetForegroundWindow(); // これでカレントフローティングViewのウィンドウハンドルを取得できる
+CString mes = CString(L"HWND:") + CString( h ) + CString( L":") + CString(gWnd);
+
+
+メニュー項目設定とメニューセット設定は分ける（自由度上がる）
+
+
+グローバルセッテイング項目
+	メニュー、キー割り当て
+//
+メニュー定義（GMenu 「メニュー定義名」で呼び出し、無い場合は「GMenu」が呼び出される）
+	セット名.xml ファイルに以下の項目を格納する
+
+メニュー項目最大表示数/ページあたり（GMenuとしてはMAX12が限界）
+
+メニュー項目
+	表示タイミング,表示ラベル,コマンドタイプ（内部or外部）,スクリプトファイル名
+
+表示タイミング
+	フラグ要素（and 条件）
+		・選択しているオブジェクトのタイプ ( Pluginロード時に、リスト（ObjectTypeList.txt）から読み込む ）
+			set oo = Selection(0)
+			typen = Application.ClassName( oo )
+			if typen = "CollectionItem" then
+				typen = oo.subcomponent.type
+			end if
+			logmessage typen
+		これで表示されるもの
+
+		・ツールバーのモード（無視（いつでも）:0 Model:1 Animate:2 Render:3 Simulate:4 Hair:5）
+
+default.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Menu>
+	<MenuSet name="0">	//メニューサブセット定義
+		<MaxItem>メニュー項目最大表示数（最大12）</MaxItem>
+		<Timing>このメニューセットが表示されるタイミング ツールバーのモード:選択しているオブジェクトのタイプ</Timing>
+		<MenuItem id="0">MenuItemDの id</MenuItem>
+	</MenuSet>
+</Menu>
+
+GMenu.xml
+<?xml version="1.0" encoding="UTF-8"?>
+</Menu>
+	<KeyBind>	//キーバインド
+		<Select></Select><Cancel></Cancel><Forward></Forward><Back></Back><Home></Home><End></End>
+	</KeyBind>
+	<MenuItemD id="0">	//メニュー項目定義
+		<Label>メニュー表示文字</Lablel>
+		<Lang>スクリプト言語の種類</Lang>
+		<Script>実際のスクリプト、またはスクリプトファイル名</Script>
+	</MenuItem>
+</Menu>
+
+何も選択せずに右クリック　＞＞　メニューセットグローバル定義編集
+	MaxItem		数字変更（SpinBox?
+	Timing		チェックBOXで選択（CheckBox
+	MenuItem	Labelを表示して順番入れ替え（id変更）（ListBox
+
+項目を選んで右クリック　＞＞　メニュー項目定義編集
+	Label
+	Lang
+	Script（Commandリストを取得して、リストからコンバートさせる？）、ファイル選択必要
